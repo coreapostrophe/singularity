@@ -1,11 +1,10 @@
-import { Box, Typography } from '@mui/material';
+import { Box } from '@mui/material';
+import Layout from './components/Layout';
 
 function App() {
   return (
     <Box>
-      <Typography variant="h1" p={2} textAlign="center">
-        Kudzu
-      </Typography>
+      <Layout />
     </Box>
   );
 }

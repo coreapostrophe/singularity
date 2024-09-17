@@ -24,5 +24,5 @@ export default [
       ],
     },
   },
-  eslintConfigPrettier
+  eslintConfigPrettier,
 ];
