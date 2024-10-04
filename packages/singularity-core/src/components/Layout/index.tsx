@@ -1,9 +1,7 @@
 import { Box } from '@mui/material';
 import { FC } from 'react';
 
-export interface LayoutProps {}
-
-const Layout: FC<LayoutProps> = () => {
+const Layout: FC = () => {
   return <Box>I work!</Box>;
 };
 
