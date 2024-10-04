@@ -1,8 +1,8 @@
 {
   "name": "singularity-core",
-  "version": "0.0.0",
-  "private": true,
+  "version": "0.0.1",
   "type": "module",
+  "module": "./src/singularity",
   "scripts": {
     "build": "tsc -b && vite build",
     "dev": "vite",

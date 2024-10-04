@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 import Layout from './components/Layout';
 
-function App() {
+function Singularity() {
   return (
     <Box>
       <Layout />
@@ -9,4 +9,4 @@ function App() {
   );
 }
 
-export default App;
+export default Singularity;
