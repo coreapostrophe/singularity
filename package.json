@@ -1,11 +1,12 @@
 {
-  "name": "singularity-workspace",
+  "name": "@singularity/workspace",
   "private": "true",
   "license": "ISC",
   "workspaces": [
     "packages/*"
   ],
   "scripts": {
+    "dev:views": "npm run dev --workspace=@singularity/views",
     "eslint": "eslint ./src",
     "lint": "npm run eslint && npm run prettier",
     "prettier": "prettier . --check"

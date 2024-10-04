@@ -1,5 +1,5 @@
 {
-  "name": "singularity-core",
+  "name": "@singularity/views",
   "version": "0.0.1",
   "type": "module",
   "module": "./src/singularity",
