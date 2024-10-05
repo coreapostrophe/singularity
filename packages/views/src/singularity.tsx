@@ -1,10 +1,10 @@
 import { Box } from '@mui/material';
-import Layout from './components/Layout';
+import Home from './components/layout/home';
 
 function Singularity() {
   return (
-    <Box>
-      <Layout />
+    <Box height="100vh">
+      <Home />
     </Box>
   );
 }

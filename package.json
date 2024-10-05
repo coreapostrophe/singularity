@@ -7,17 +7,18 @@
   ],
   "scripts": {
     "dev:views": "npm run dev --workspace=@singularity/views",
-    "eslint": "eslint ./src",
+    "eslint": "eslint packages/**/src/**/*",
     "lint": "npm run eslint && npm run prettier",
     "prettier": "prettier . --check"
   },
   "devDependencies": {
+    "@eslint/js": "^9.12.0",
     "@vercel/style-guide": "^6.0.0",
-    "eslint": "^8.57.0",
+    "eslint": "^8.57.1",
     "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-react": "^7.36.1",
-    "globals": "^15.8.0",
+    "eslint-plugin-react": "^7.37.1",
+    "globals": "^15.10.0",
     "prettier": "^3.3.3",
-    "typescript-eslint": "^7.16.1"
+    "typescript-eslint": "^7.18.0"
   }
 }
