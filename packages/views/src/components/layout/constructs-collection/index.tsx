@@ -1,7 +1,6 @@
 import { Add, Settings } from '@mui/icons-material';
 import { Box, IconButton, Stack } from '@mui/material';
 import { FC } from 'react';
-import { Construct } from '../../../models/construct';
 
 const Options: FC = () => {
   return (
@@ -17,14 +16,15 @@ const Options: FC = () => {
 };
 
 const ConstructsCollection: FC = () => {
-  const constructs: Construct[] = [
-    {
-      id: 'cons-1',
-      title: 'Construct 1',
-      features: [],
-      proofs: [],
-    },
-  ];
+  // const constructs: Construct[] = [
+  //   {
+  //     id: 'cons-1',
+  //     title: 'Construct 1',
+  //     features: [],
+  //     proofs: [],
+  //   },
+  // ];
+
   return (
     <Box height="100%">
       <Options />
