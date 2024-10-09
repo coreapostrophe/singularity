@@ -13,12 +13,21 @@ export interface Proof {
 
 export interface Construct {
   id: string;
-  title: string;
-  features: Feature[];
-  proofs: Proof[];
+  title?: string;
+  features?: Feature[];
+  proofs?: Proof[];
 }
 
-export const constructsAtom = atom<Construct[]>([]);
+/// Temporary value for prototype development
+const mockConstructs: Construct[] = [
+  { id: 'cons-1', features: [], proofs: [], title: 'Construct 1' },
+  { id: 'cons-2', features: [], proofs: [], title: 'Construct 2' },
+  { id: 'cons-3', features: [], proofs: [], title: 'Construct 3' },
+  { id: 'cons-4', features: [], proofs: [], title: 'Construct 4' },
+  { id: 'cons-5', features: [], proofs: [], title: 'Construct 5' },
+];
+
+export const constructsAtom = atom<Construct[]>(mockConstructs);
 
 export const useConstructs = () => {
   const [constructs, setConstructs] = useImmerAtom(constructsAtom);

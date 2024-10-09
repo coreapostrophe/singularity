@@ -1,34 +1,56 @@
 import { Add, Settings } from '@mui/icons-material';
-import { Box, IconButton, Stack } from '@mui/material';
+import { ButtonBase, IconButton, Stack } from '@mui/material';
 import { FC } from 'react';
+import { useConstructs } from '../../../models/construct';
+import { v4 as generateUuid } from 'uuid';
 
 const Options: FC = () => {
+  const { addConstruct } = useConstructs();
+
+  const createConstruct = () => {
+    addConstruct({ id: generateUuid() });
+  };
+
   return (
     <Stack justifyContent="flex-end" direction="row" spacing={0.5}>
-      <IconButton aria-label="add">
+      <IconButton aria-label="add" onClick={createConstruct}>
         <Add />
       </IconButton>
-      <IconButton aria-label="delete">
+      <IconButton aria-label="settings">
         <Settings />
       </IconButton>
     </Stack>
   );
 };
 
-const ConstructsCollection: FC = () => {
-  // const constructs: Construct[] = [
-  //   {
-  //     id: 'cons-1',
-  //     title: 'Construct 1',
-  //     features: [],
-  //     proofs: [],
-  //   },
-  // ];
+const ConstructsList: FC = () => {
+  const { constructs } = useConstructs();
 
   return (
-    <Box height="100%">
+    <Stack flex="auto" overflow="auto" spacing={1}>
+      {constructs.map((construct) => (
+        <ButtonBase
+          key={construct.id}
+          component="div"
+          sx={{
+            p: 1,
+            borderRadius: 1,
+            bgcolor: 'grey.900',
+          }}
+        >
+          {construct.title ?? 'Untitled'}
+        </ButtonBase>
+      ))}
+    </Stack>
+  );
+};
+
+const ConstructsCollection: FC = () => {
+  return (
+    <Stack height="100%" spacing={1}>
       <Options />
-    </Box>
+      <ConstructsList />
+    </Stack>
   );
 };
 
