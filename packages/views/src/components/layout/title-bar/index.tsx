@@ -7,7 +7,8 @@ import {
   styled,
   Typography,
 } from '@mui/material';
-import { FC } from 'react';
+import { FC, MouseEventHandler, useMemo } from 'react';
+import { getCurrentWindow } from '@tauri-apps/api/window';
 
 const WindowActionsWrapper = styled(ButtonGroup)({
   [`& .${buttonGroupClasses.grouped}`]: {
@@ -17,8 +18,27 @@ const WindowActionsWrapper = styled(ButtonGroup)({
 });
 
 const TitleBar: FC = () => {
+  const appWindow = useMemo(() => getCurrentWindow(), []);
+
+  const dragWindow: MouseEventHandler<HTMLDivElement> = (event) => {
+    if (event.buttons === 1) {
+      event.detail === 2
+        ? appWindow.toggleMaximize()
+        : appWindow.startDragging();
+    }
+  };
+
+  const stopDragPropagation: MouseEventHandler<HTMLButtonElement> = (event) =>
+    event.stopPropagation();
+
   return (
-    <Stack direction="row" bgcolor="background.100" alignItems="center">
+    <Stack
+      data-tauri-drag-region
+      direction="row"
+      bgcolor="background.100"
+      alignItems="center"
+      onMouseDown={dragWindow}
+    >
       <Typography
         fontSize="0.75rem"
         flex={1}
@@ -29,13 +49,25 @@ const TitleBar: FC = () => {
         Singularity
       </Typography>
       <WindowActionsWrapper variant="text">
-        <Button size="small">
+        <Button
+          size="small"
+          onClick={() => appWindow.minimize()}
+          onMouseDown={stopDragPropagation}
+        >
           <Minimize sx={{ fontSize: 13 }} />
         </Button>
-        <Button size="small">
+        <Button
+          size="small"
+          onClick={() => appWindow.toggleMaximize()}
+          onMouseDown={stopDragPropagation}
+        >
           <Crop54 sx={{ fontSize: 13 }} />
         </Button>
-        <Button size="small">
+        <Button
+          size="small"
+          onClick={() => appWindow.close()}
+          onMouseDown={stopDragPropagation}
+        >
           <Close sx={{ fontSize: 13 }} />
         </Button>
       </WindowActionsWrapper>
