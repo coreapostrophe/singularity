@@ -1,12 +1,12 @@
-import { Paper } from '@mui/material';
+import { Box } from '@mui/material';
 import { FC } from 'react';
 import ConstructsCollection from '../constructs-collection';
 
 const WorldBar: FC = () => {
   return (
-    <Paper square sx={{ height: '100%', p: 1 }} elevation={1}>
+    <Box sx={{ p: 1, height: '100%', bgcolor: 'background.100' }}>
       <ConstructsCollection />
-    </Paper>
+    </Box>
   );
 };
 

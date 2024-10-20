@@ -1,18 +1,22 @@
-import { Grid2 as Grid } from '@mui/material';
+import { Grid2 as Grid, Stack } from '@mui/material';
 import { FC } from 'react';
 import WorldBar from '../world-bar';
 import Workspace from '../workspace';
+import TitleBar from '../title-bar';
 
 const Home: FC = () => {
   return (
-    <Grid container wrap="nowrap" height="100%">
-      <Grid minWidth="20rem">
-        <WorldBar />
+    <Stack height="100%">
+      <TitleBar />
+      <Grid container wrap="nowrap" flex={1}>
+        <Grid minWidth="20rem">
+          <WorldBar />
+        </Grid>
+        <Grid size="grow">
+          <Workspace />
+        </Grid>
       </Grid>
-      <Grid size="grow">
-        <Workspace />
-      </Grid>
-    </Grid>
+    </Stack>
   );
 };
 

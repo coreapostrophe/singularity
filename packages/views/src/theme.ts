@@ -1,46 +1,59 @@
 import { createTheme } from '@mui/material';
+import { ColorPartial } from '@mui/material/styles/createPalette';
+
+declare module '@mui/material/styles' {
+  interface TypeBackground extends ColorPartial {}
+}
 
 export default createTheme({
   palette: {
-    mode: 'dark',
+    mode: 'light',
     primary: {
-      main: '#fbcc80',
+      main: '#C05746',
+      '50': '#fcf5f4',
+      '100': '#fae9e6',
+      '200': '#f6d7d2',
+      '300': '#eebbb3',
+      '400': '#e29487',
+      '500': '#d46f5f',
+      '600': '#c05746',
+      '700': '#a04435',
+      '800': '#853b2f',
+      '900': '#6f362d',
     },
     secondary: {
-      main: '#80affb',
+      main: '#7A918D',
+      '50': '#f6f7f7',
+      '100': '#e0e7e5',
+      '200': '#c1cecb',
+      '300': '#9aaeaa',
+      '400': '#7a918d',
+      '500': '#5a726e',
+      '600': '#475a57',
+      '700': '#3b4a48',
+      '800': '#323d3b',
+      '900': '#2c3534',
+    },
+    background: {
+      paper: '#FEF7EB',
+      default: '#FEF7EB',
+      '50': '#fef7eb',
+      '100': '#fdf0d7',
+      '200': '#faddae',
+      '300': '#f6c37b',
+      '400': '#f2a045',
+      '500': '#ee8521',
+      '600': '#df6a17',
+      '700': '#b95115',
+      '800': '#944018',
+      '900': '#773617',
+    },
+    common: {
+      black: '#040403',
+      white: '#272727',
     },
   },
-  components: {
-    MuiCssBaseline: {
-      styleOverrides: {
-        body: {
-          scrollbarColor: '#6b6b6b #2b2b2b',
-          '&::-webkit-scrollbar, & *::-webkit-scrollbar': {
-            backgroundColor: '#2b2b2b',
-          },
-          '&::-webkit-scrollbar-thumb, & *::-webkit-scrollbar-thumb': {
-            borderRadius: 8,
-            backgroundColor: '#6b6b6b',
-            minHeight: 24,
-            border: '3px solid #2b2b2b',
-          },
-          '&::-webkit-scrollbar-thumb:focus, & *::-webkit-scrollbar-thumb:focus':
-            {
-              backgroundColor: '#959595',
-            },
-          '&::-webkit-scrollbar-thumb:active, & *::-webkit-scrollbar-thumb:active':
-            {
-              backgroundColor: '#959595',
-            },
-          '&::-webkit-scrollbar-thumb:hover, & *::-webkit-scrollbar-thumb:hover':
-            {
-              backgroundColor: '#959595',
-            },
-          '&::-webkit-scrollbar-corner, & *::-webkit-scrollbar-corner': {
-            backgroundColor: '#2b2b2b',
-          },
-        },
-      },
-    },
+  typography: {
+    fontFamily: 'Source Sans Pro, sans-serif',
   },
 });

@@ -1,5 +1,5 @@
 import { Add, Settings } from '@mui/icons-material';
-import { ButtonBase, IconButton, Stack } from '@mui/material';
+import { Box, IconButton, Stack } from '@mui/material';
 import { FC } from 'react';
 import { useConstructs } from '../../../models/construct';
 import { v4 as generateUuid } from 'uuid';
@@ -27,19 +27,9 @@ const ConstructsList: FC = () => {
   const { constructs } = useConstructs();
 
   return (
-    <Stack flex="auto" overflow="auto" spacing={1}>
+    <Stack flex="auto" overflow="auto">
       {constructs.map((construct) => (
-        <ButtonBase
-          key={construct.id}
-          component="div"
-          sx={{
-            p: 1,
-            borderRadius: 1,
-            bgcolor: 'grey.900',
-          }}
-        >
-          {construct.title ?? 'Untitled'}
-        </ButtonBase>
+        <Box key={construct.id}>{construct.title ?? 'Untitled'}</Box>
       ))}
     </Stack>
   );
