@@ -6,7 +6,8 @@
     "packages/*"
   ],
   "scripts": {
-    "dev:views": "npm run dev --workspace=@singularity/views",
+    "dev:native": "npm run --workspace=@singularity/native tauri dev",
+    "dev:views": "npm run --workspace=@singularity/views dev",
     "eslint": "eslint packages/**/src/**/*",
     "lint": "npm run eslint && npm run prettier",
     "prettier": "prettier . --check"

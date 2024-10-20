@@ -1,11 +1,15 @@
-import { Box } from '@mui/material';
+import { Box, CssBaseline, ThemeProvider } from '@mui/material';
 import Home from './components/layout/home';
+import KudzuTheme from './theme';
 
 function Singularity() {
   return (
-    <Box height="100vh">
-      <Home />
-    </Box>
+    <ThemeProvider theme={KudzuTheme}>
+      <CssBaseline />
+      <Box height="100vh">
+        <Home />
+      </Box>
+    </ThemeProvider>
   );
 }
 
