@@ -8,7 +8,7 @@ import {
   Typography,
 } from '@mui/material';
 import { FC } from 'react';
-console.log(buttonGroupClasses.root);
+
 const WindowActionsWrapper = styled(ButtonGroup)({
   [`& .${buttonGroupClasses.grouped}`]: {
     borderRight: 'none',
