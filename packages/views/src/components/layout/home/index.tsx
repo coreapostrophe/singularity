@@ -3,11 +3,18 @@ import { FC } from 'react';
 import WorldBar from '../world-bar';
 import Workspace from '../workspace';
 import TitleBar from '../title-bar';
+import { Window } from '@tauri-apps/api/window';
 
-const Home: FC = () => {
+export interface HomeProps {
+  window: Window;
+}
+
+const Home: FC<HomeProps> = (props) => {
+  const { window } = props;
+
   return (
     <Stack height="100%">
-      <TitleBar />
+      {Boolean(window) && <TitleBar window={window} />}
       <Grid container wrap="nowrap" flex={1}>
         <Grid minWidth="20rem">
           <WorldBar />

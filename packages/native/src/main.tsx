@@ -1,9 +1,9 @@
-import Singularity from '@singularity/views';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import App from './app';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <Singularity />
+    <App />
   </React.StrictMode>,
 );

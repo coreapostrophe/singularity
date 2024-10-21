@@ -7,8 +7,8 @@ import {
   styled,
   Typography,
 } from '@mui/material';
-import { FC, MouseEventHandler, useMemo } from 'react';
-import { getCurrentWindow } from '@tauri-apps/api/window';
+import { FC, MouseEventHandler } from 'react';
+import { Window } from '@tauri-apps/api/window';
 
 const WindowActionsWrapper = styled(ButtonGroup)({
   [`& .${buttonGroupClasses.grouped}`]: {
@@ -17,8 +17,12 @@ const WindowActionsWrapper = styled(ButtonGroup)({
   },
 });
 
-const TitleBar: FC = () => {
-  const appWindow = useMemo(() => getCurrentWindow(), []);
+export interface TitleBarProps {
+  window: Window;
+}
+
+const TitleBar: FC<TitleBarProps> = (props) => {
+  const { window: appWindow } = props;
 
   const dragWindow: MouseEventHandler<HTMLDivElement> = (event) => {
     if (event.buttons === 1) {
