@@ -48,7 +48,7 @@ const TitleBar: FC<TitleBarProps> = (props) => {
         flex={1}
         fontWeight={700}
         px={1}
-        color="primary.main"
+        color="background.500"
       >
         Singularity
       </Typography>
@@ -58,21 +58,21 @@ const TitleBar: FC<TitleBarProps> = (props) => {
           onClick={() => appWindow.minimize()}
           onMouseDown={stopDragPropagation}
         >
-          <Minimize sx={{ fontSize: 13 }} />
+          <Minimize sx={{ fontSize: 13, color: 'common.black' }} />
         </Button>
         <Button
           size="small"
           onClick={() => appWindow.toggleMaximize()}
           onMouseDown={stopDragPropagation}
         >
-          <Crop54 sx={{ fontSize: 13 }} />
+          <Crop54 sx={{ fontSize: 13, color: 'common.black' }} />
         </Button>
         <Button
           size="small"
           onClick={() => appWindow.close()}
           onMouseDown={stopDragPropagation}
         >
-          <Close sx={{ fontSize: 13 }} />
+          <Close sx={{ fontSize: 13, color: 'common.black' }} />
         </Button>
       </WindowActionsWrapper>
     </Stack>

@@ -5,11 +5,11 @@ import Workspace from '../workspace';
 import TitleBar from '../title-bar';
 import { Window } from '@tauri-apps/api/window';
 
-export interface HomeProps {
+export interface MainViewProps {
   window: Window;
 }
 
-const Home: FC<HomeProps> = (props) => {
+const MainView: FC<MainViewProps> = (props) => {
   const { window } = props;
 
   return (
@@ -27,4 +27,4 @@ const Home: FC<HomeProps> = (props) => {
   );
 };
 
-export default Home;
+export default MainView;

@@ -1,5 +1,5 @@
 import { Box, CssBaseline, ThemeProvider } from '@mui/material';
-import Home from './components/layout/home';
+import MainView from './components/layout/main-view';
 import KudzuTheme from './theme';
 import { FC } from 'react';
 import { Window } from '@tauri-apps/api/window';
@@ -20,7 +20,7 @@ const Singularity: FC<SingularityProps> = (props) => {
     <ThemeProvider theme={KudzuTheme}>
       <CssBaseline />
       <Box height="100vh">
-        <Home window={window} />
+        <MainView window={window} />
       </Box>
     </ThemeProvider>
   );
