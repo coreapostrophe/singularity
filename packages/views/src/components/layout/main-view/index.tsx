@@ -6,16 +6,16 @@ import TitleBar from '../title-bar';
 import { Window } from '@tauri-apps/api/window';
 
 export interface MainViewProps {
-  window: Window;
+  window?: Window;
 }
 
 const MainView: FC<MainViewProps> = (props) => {
   const { window } = props;
 
   return (
-    <Stack height="100%">
-      {Boolean(window) && <TitleBar window={window} />}
-      <Grid container wrap="nowrap" flex={1}>
+    <Stack height="100%" overflow="hidden">
+      {!!window && <TitleBar window={window} />}
+      <Grid container wrap="nowrap" flex={1} overflow="hidden">
         <Grid minWidth="20rem">
           <WorldBar />
         </Grid>

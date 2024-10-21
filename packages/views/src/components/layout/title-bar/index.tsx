@@ -5,6 +5,7 @@ import {
   buttonGroupClasses,
   Stack,
   styled,
+  touchRippleClasses,
   Typography,
 } from '@mui/material';
 import { FC, MouseEventHandler } from 'react';
@@ -14,6 +15,12 @@ const WindowActionsWrapper = styled(ButtonGroup)({
   [`& .${buttonGroupClasses.grouped}`]: {
     borderRight: 'none',
     borderRadius: '0',
+  },
+});
+
+const ActionButton = styled(Button)({
+  [`& .${touchRippleClasses.root}`]: {
+    color: 'grey',
   },
 });
 
@@ -53,27 +60,27 @@ const TitleBar: FC<TitleBarProps> = (props) => {
         Singularity
       </Typography>
       <WindowActionsWrapper variant="text">
-        <Button
+        <ActionButton
           size="small"
           onClick={() => appWindow.minimize()}
           onMouseDown={stopDragPropagation}
         >
-          <Minimize sx={{ fontSize: 13, color: 'common.black' }} />
-        </Button>
-        <Button
+          <Minimize sx={{ fontSize: 13, color: 'background.600' }} />
+        </ActionButton>
+        <ActionButton
           size="small"
           onClick={() => appWindow.toggleMaximize()}
           onMouseDown={stopDragPropagation}
         >
-          <Crop54 sx={{ fontSize: 13, color: 'common.black' }} />
-        </Button>
-        <Button
+          <Crop54 sx={{ fontSize: 13, color: 'background.600' }} />
+        </ActionButton>
+        <ActionButton
           size="small"
           onClick={() => appWindow.close()}
           onMouseDown={stopDragPropagation}
         >
-          <Close sx={{ fontSize: 13, color: 'common.black' }} />
-        </Button>
+          <Close sx={{ fontSize: 13, color: 'background.600' }} />
+        </ActionButton>
       </WindowActionsWrapper>
     </Stack>
   );

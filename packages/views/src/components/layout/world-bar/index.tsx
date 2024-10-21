@@ -4,7 +4,7 @@ import ConstructsCollection from '../constructs-collection';
 
 const WorldBar: FC = () => {
   return (
-    <Box sx={{ p: 1, height: '100%', bgcolor: 'background.100' }}>
+    <Box p={1} height="100%" bgcolor="background.100">
       <ConstructsCollection />
     </Box>
   );
