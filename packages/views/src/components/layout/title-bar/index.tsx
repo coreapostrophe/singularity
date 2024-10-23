@@ -29,13 +29,11 @@ export interface TitleBarProps {
 }
 
 const TitleBar: FC<TitleBarProps> = (props) => {
-  const { window: appWindow } = props;
+  const { window } = props;
 
   const dragWindow: MouseEventHandler<HTMLDivElement> = (event) => {
     if (event.buttons === 1) {
-      event.detail === 2
-        ? appWindow.toggleMaximize()
-        : appWindow.startDragging();
+      event.detail === 2 ? window.toggleMaximize() : window.startDragging();
     }
   };
 
@@ -62,21 +60,21 @@ const TitleBar: FC<TitleBarProps> = (props) => {
       <WindowActionsWrapper variant="text">
         <ActionButton
           size="small"
-          onClick={() => appWindow.minimize()}
+          onClick={() => window.minimize()}
           onMouseDown={stopDragPropagation}
         >
           <Minimize sx={{ fontSize: 13, color: 'background.600' }} />
         </ActionButton>
         <ActionButton
           size="small"
-          onClick={() => appWindow.toggleMaximize()}
+          onClick={() => window.toggleMaximize()}
           onMouseDown={stopDragPropagation}
         >
           <Crop54 sx={{ fontSize: 13, color: 'background.600' }} />
         </ActionButton>
         <ActionButton
           size="small"
-          onClick={() => appWindow.close()}
+          onClick={() => window.close()}
           onMouseDown={stopDragPropagation}
         >
           <Close sx={{ fontSize: 13, color: 'background.600' }} />
