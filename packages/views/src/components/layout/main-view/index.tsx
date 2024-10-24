@@ -14,7 +14,7 @@ const MainView: FC<MainViewProps> = (props) => {
 
   return (
     <Stack height="100%" overflow="hidden">
-      {!!window && <TitleBar window={window} />}
+      <TitleBar window={window} />
       <Grid container wrap="nowrap" flex={1} overflow="hidden">
         <Grid minWidth="20rem">
           <WorldBar />

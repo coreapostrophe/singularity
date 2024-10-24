@@ -25,14 +25,14 @@ const ActionButton = styled(Button)({
 });
 
 export interface TitleBarProps {
-  window: Window;
+  window?: Window;
 }
 
 const TitleBar: FC<TitleBarProps> = (props) => {
   const { window } = props;
 
   const dragWindow: MouseEventHandler<HTMLDivElement> = (event) => {
-    if (event.buttons === 1) {
+    if (!!window && event.buttons === 1) {
       event.detail === 2 ? window.toggleMaximize() : window.startDragging();
     }
   };
@@ -57,29 +57,31 @@ const TitleBar: FC<TitleBarProps> = (props) => {
       >
         Singularity
       </Typography>
-      <WindowActionsWrapper variant="text">
-        <ActionButton
-          size="small"
-          onClick={() => window.minimize()}
-          onMouseDown={stopDragPropagation}
-        >
-          <Minimize sx={{ fontSize: 13, color: 'background.600' }} />
-        </ActionButton>
-        <ActionButton
-          size="small"
-          onClick={() => window.toggleMaximize()}
-          onMouseDown={stopDragPropagation}
-        >
-          <Crop54 sx={{ fontSize: 13, color: 'background.600' }} />
-        </ActionButton>
-        <ActionButton
-          size="small"
-          onClick={() => window.close()}
-          onMouseDown={stopDragPropagation}
-        >
-          <Close sx={{ fontSize: 13, color: 'background.600' }} />
-        </ActionButton>
-      </WindowActionsWrapper>
+      {window && (
+        <WindowActionsWrapper variant="text">
+          <ActionButton
+            size="small"
+            onClick={() => window?.minimize()}
+            onMouseDown={stopDragPropagation}
+          >
+            <Minimize sx={{ fontSize: 13, color: 'background.600' }} />
+          </ActionButton>
+          <ActionButton
+            size="small"
+            onClick={() => window?.toggleMaximize()}
+            onMouseDown={stopDragPropagation}
+          >
+            <Crop54 sx={{ fontSize: 13, color: 'background.600' }} />
+          </ActionButton>
+          <ActionButton
+            size="small"
+            onClick={() => window?.close()}
+            onMouseDown={stopDragPropagation}
+          >
+            <Close sx={{ fontSize: 13, color: 'background.600' }} />
+          </ActionButton>
+        </WindowActionsWrapper>
+      )}
     </Stack>
   );
 };
