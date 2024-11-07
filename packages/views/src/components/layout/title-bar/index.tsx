@@ -10,6 +10,7 @@ import {
 } from '@mui/material';
 import { FC, MouseEventHandler } from 'react';
 import { Window } from '@tauri-apps/api/window';
+import FileMenu from './file-menu';
 
 const WindowActionsWrapper = styled(ButtonGroup)({
   [`& .${buttonGroupClasses.grouped}`]: {
@@ -47,16 +48,20 @@ const TitleBar: FC<TitleBarProps> = (props) => {
       bgcolor="background.100"
       alignItems="center"
       onMouseDown={dragWindow}
+      py={0.5}
     >
-      <Typography
-        fontSize="0.75rem"
-        flex={1}
-        fontWeight={700}
-        px={1}
-        color="background.500"
-      >
-        Singularity
-      </Typography>
+      <Stack direction="row" alignItems="center" spacing={1}>
+        <Typography
+          fontSize="0.75rem"
+          flex={1}
+          fontWeight={700}
+          px={1}
+          color="background.500"
+        >
+          Singularity
+        </Typography>
+        <FileMenu />
+      </Stack>
       {window && (
         <WindowActionsWrapper variant="text">
           <ActionButton
