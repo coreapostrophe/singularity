@@ -1,3 +1,3 @@
-pub struct Project;
+pub struct Project {}
 
 impl Project {}

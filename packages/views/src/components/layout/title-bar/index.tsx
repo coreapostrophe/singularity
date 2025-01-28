@@ -8,9 +8,9 @@ import {
   touchRippleClasses,
   Typography,
 } from '@mui/material';
-import { FC, MouseEventHandler } from 'react';
-import { Window } from '@tauri-apps/api/window';
+import { FC, MouseEventHandler, useCallback } from 'react';
 import FileMenu from './file-menu';
+import { useSingularityContext } from '../../../singularity';
 
 const WindowActionsWrapper = styled(ButtonGroup)({
   [`& .${buttonGroupClasses.grouped}`]: {
@@ -25,30 +25,31 @@ const ActionButton = styled(Button)({
   },
 });
 
-export interface TitleBarProps {
-  window?: Window;
-}
+const TitleBar: FC = () => {
+  const { window } = useSingularityContext();
 
-const TitleBar: FC<TitleBarProps> = (props) => {
-  const { window } = props;
+  const dragWindow: MouseEventHandler<HTMLDivElement> = useCallback(
+    (event) => {
+      if (!!window && event.buttons === 1) {
+        window.startDragging();
+      }
+    },
+    [window],
+  );
 
-  const dragWindow: MouseEventHandler<HTMLDivElement> = (event) => {
-    if (!!window && event.buttons === 1) {
-      event.detail === 2 ? window.toggleMaximize() : window.startDragging();
-    }
-  };
-
-  const stopDragPropagation: MouseEventHandler<HTMLButtonElement> = (event) =>
-    event.stopPropagation();
+  const stopDragPropagation: MouseEventHandler<
+    HTMLDivElement | HTMLButtonElement
+  > = useCallback((event) => event.stopPropagation(), []);
 
   return (
     <Stack
-      data-tauri-drag-region
       direction="row"
-      bgcolor="background.100"
       alignItems="center"
+      bgcolor="background.100"
+      justifyContent="space-between"
       onMouseDown={dragWindow}
       py={0.5}
+      sx={{ userSelect: 'none' }}
     >
       <Stack direction="row" alignItems="center" spacing={1}>
         <Typography
@@ -57,10 +58,17 @@ const TitleBar: FC<TitleBarProps> = (props) => {
           fontWeight={700}
           px={1}
           color="background.500"
+          sx={{ userSelect: 'none' }}
         >
           Singularity
         </Typography>
-        <FileMenu />
+        <Stack
+          direction="row"
+          alignItems="center"
+          onMouseDown={stopDragPropagation}
+        >
+          <FileMenu />
+        </Stack>
       </Stack>
       {window && (
         <WindowActionsWrapper variant="text">

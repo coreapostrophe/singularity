@@ -3,18 +3,11 @@ import { FC } from 'react';
 import WorldBar from '../world-bar';
 import Workspace from '../workspace';
 import TitleBar from '../title-bar';
-import { Window } from '@tauri-apps/api/window';
 
-export interface MainViewProps {
-  window?: Window;
-}
-
-const MainView: FC<MainViewProps> = (props) => {
-  const { window } = props;
-
+const MainView: FC = () => {
   return (
     <Stack height="100%" overflow="hidden">
-      <TitleBar window={window} />
+      <TitleBar />
       <Grid container wrap="nowrap" flex={1} overflow="hidden">
         <Grid minWidth="20rem">
           <WorldBar />

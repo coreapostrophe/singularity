@@ -1,7 +1,7 @@
 import { Box, CssBaseline, ThemeProvider } from '@mui/material';
 import MainView from './components/layout/main-view';
 import KudzuTheme from './theme';
-import { FC } from 'react';
+import { createContext, FC, useContext } from 'react';
 import { Window } from '@tauri-apps/api/window';
 
 import '@fontsource/source-sans-pro/400.css';
@@ -13,16 +13,19 @@ export interface SingularityProps {
   window?: Window;
 }
 
-const Singularity: FC<SingularityProps> = (props) => {
-  const { window } = props;
+export const SingularityContext = createContext<SingularityProps>({});
+export const useSingularityContext = () => useContext(SingularityContext);
 
+const Singularity: FC<SingularityProps> = (props) => {
   return (
-    <ThemeProvider theme={KudzuTheme}>
-      <CssBaseline />
-      <Box height="100vh">
-        <MainView window={window} />
-      </Box>
-    </ThemeProvider>
+    <SingularityContext.Provider value={props}>
+      <ThemeProvider theme={KudzuTheme}>
+        <CssBaseline />
+        <Box height="100vh">
+          <MainView />
+        </Box>
+      </ThemeProvider>
+    </SingularityContext.Provider>
   );
 };
 
