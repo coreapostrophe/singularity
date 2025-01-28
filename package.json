@@ -8,6 +8,7 @@
   "scripts": {
     "dev:native": "npm run --workspace=@singularity/native tauri dev",
     "dev:views": "npm run --workspace=@singularity/views dev",
+    "test:native-tauri": "cd ./packages/native/src-tauri && cargo check",
     "eslint": "eslint packages/**/src/**/*",
     "lint": "npm run eslint && npm run prettier",
     "prettier": "prettier . --check"

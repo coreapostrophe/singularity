@@ -13,10 +13,10 @@ const Options: FC = () => {
 
   return (
     <Stack justifyContent="flex-end" direction="row" spacing={0.5}>
-      <IconButton aria-label="add" onClick={createConstruct}>
+      <IconButton aria-label="add" size='small' onClick={createConstruct}>
         <Add />
       </IconButton>
-      <IconButton aria-label="settings">
+      <IconButton aria-label="settings" size='small'>
         <Settings />
       </IconButton>
     </Stack>
